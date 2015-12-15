@@ -4,18 +4,18 @@ autor: Filipe Fernandes
 ### 1. **Adicionar** 2 ataques ao mesmo tempo para os seguintes pokemons: Pikachu, Squirtle, Bulbassauro e Charmander.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {name: {$in: [/pikachu/i, /squirtle/i, /charmander/i, /Bulbassauro/i]}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var attack = ['Hadouken', 'Shoryuken']
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var mod = {$pushAll:{moves:attack}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var options = {multi : true}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.update(query, mod, options)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {name: {$in: [/pikachu/i, /squirtle/i, /charmander/i, /Bulbassauro/i]}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var attack = ['Hadouken', 'Shoryuken']
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var mod = {$pushAll:{moves:attack}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var options = {multi : true}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.update(query, mod, options)
 Updated 4 existing record(s) in 56ms
 WriteResult({
 	"nMatched": 4,
 	"nUpserted": 0,
 	"nModified": 4
 })
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -82,10 +82,10 @@ Fetched 4 record(s) in 70ms
 ### 2. **Adicionar** 1 movimento em todos os pokemons: `desvio`.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {}                            
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var mod = {$push: {moves: 'desvio'}}      
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var options = {multi : true}              
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.update(query, mod, options)   
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {}                            
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var mod = {$push: {moves: 'desvio'}}      
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var options = {multi : true}              
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.update(query, mod, options)   
 Updated 6 existing record(s) in 5ms                                                              
 WriteResult({                                                                                    
 	"nMatched": 6,                                                                               
@@ -93,7 +93,7 @@ WriteResult({
 	"nModified": 6                                                                               
 })                                                                                               
 
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -190,10 +190,10 @@ Fetched 6 record(s) in 52ms
 ### 3. **Adicionar** o pokemon `AindaNaoExisteMon` caso ele não exista com todos os dados com o valor `null` e a descrição: "Sem maiores informações".
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {name: /AindaNaoExisteMon/i}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var mod = { $setOnInsert: { "name": 'AindaNaoExisteMon', "description": "Sem maiores informações", "type": null, "attack": null, "height": null, "active": false, "moves": null } }
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var options = {upsert: true}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.update(query, mod, options)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {name: /AindaNaoExisteMon/i}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var mod = { $setOnInsert: { "name": 'AindaNaoExisteMon', "description": "Sem maiores informações", "type": null, "attack": null, "height": null, "active": false, "moves": null } }
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var options = {upsert: true}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.update(query, mod, options)
 Updated 1 new record(s) in 40ms
 WriteResult({
 	"nMatched": 0,
@@ -202,7 +202,7 @@ WriteResult({
 	"_id": ObjectId("565e2c0cdb767bc4a12d287f")
 })
 
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565e2c0cdb767bc4a12d287f"),
 	"name": "AindaNaoExisteMon",
@@ -220,8 +220,8 @@ Fetched 1 record(s) in 20ms
 ### 4. Pesquisar todos o pokemons que possuam o ataque `investida` e mais um que você adicionou, escolha seu pokemon favorito.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {moves: {$in: [/investida/i, /shoryuken/i]}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {moves: {$in: [/investida/i, /shoryuken/i]}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -318,8 +318,8 @@ Fetched 6 record(s) in 97ms
 ### 5. Pesquisar **todos** os pokemons que possuam os ataques que você adicionou, escolha seu pokemon favorito.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {moves: {$all: [/Hadouken/i, /shoryuken/i]}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {moves: {$all: [/Hadouken/i, /shoryuken/i]}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -390,8 +390,8 @@ Fetched 4 record(s) in 86ms
 ### 6. Pesquisar **todos** os pokemons que não são do tipo `elétrico`.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {type: {$ne: 'electric'}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {type: {$ne: 'electric'}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -483,8 +483,8 @@ Fetched 6 record(s) in 72ms
 ### 7. Pesquisar **todos** os pokemons que tenham o ataque `investida` **E** tenham a defesa **não menor ou igual** a 49.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = { $and: [{moves: {$in: [/investida/i]}}, {defense : {$not: {$lte: 49}}}]}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = { $and: [{moves: {$in: [/investida/i]}}, {defense : {$not: {$lte: 49}}}]}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9ac0120d94deb1c21e07"),
 	"name": "Bulbassauro",
@@ -568,8 +568,8 @@ Fetched 5 record(s) in 49ms
 ### 8. Remova **todos** os pokemons do tipo água e com attack menor que 50.
 
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query= { $and: [{type: /água/i}, {attack : {$lt: 50}}]}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query= { $and: [{type: /água/i}, {attack : {$lt: 50}}]}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 {
 	"_id": ObjectId("565d9b42120d94deb1c21e09"),
 	"name": "Squirtle",
@@ -588,23 +588,23 @@ FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
 }
 Fetched 1 record(s) in 25ms
 
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.remove(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.remove(query)
 Removed 1 record(s) in 56ms
 WriteResult({
 	"nRemoved": 1
 })
 
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 ```
 Fetched 0 record(s) in 1ms
 
 ### 9. nesse exercício demonstre qual a diferença entre os operadores $ne e $not.
 
->Primeiro vamos listar os pokemons com attack menor que 8000*
+>Primeiro vamos listar os pokemons com attack menor que 8000
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {attack: {$lt : 8000}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var mod = {"name": 1, "attack": 1}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query,mod)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: {$lt : 8000}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var mod = {"name": 1, "attack": 1}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query,mod)
 {
 "_id": ObjectId("565d9ac0120d94deb1c21e07"),
 "name": "Bulbassauro",
@@ -629,10 +629,10 @@ Fetched 4 record(s) in 27ms
 
 ```
 
->Agora utilizando o $not para negar e trazer o oposto*
+>Agora utilizando o $not para negar e trazer o oposto
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {attack: { $not : {$lt : 8000}}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query,mod)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: { $not : {$lt : 8000}}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query,mod)
 {
     "_id": ObjectId("565da08b120d94deb1c21e0a"),
     "name": "Testemon",
@@ -649,8 +649,8 @@ Fetched 2 record(s) in 5ms
 
 >Se no mesmo exemplo fosse utilizado o $ne não teria um resultado satisfatório, pois ele não consegue utilizar a lógida do opedaor $lt e lista todos os pokemons que não sejam iguais a attack 8000.
 ```js
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> var query = {attack: { $ne : {$lt : 8000}}}
-FilipeFernandes(C:\mongodb\bin\mongod.exe-3.0.7) test> db.pokemons.find(query,mod)
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: { $ne : {$lt : 8000}}}
+FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query,mod)
 {
     "_id": ObjectId("565d9ac0120d94deb1c21e07"),
     "name": "Bulbassauro",
