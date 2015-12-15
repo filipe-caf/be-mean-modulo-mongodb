@@ -689,9 +689,9 @@ Fetched 6 record(s) in 44ms
 ```
 
 
-## O operador $not é indicado para fazer operações lógicas usando em conjuntos `$lt,$lte, $gt, $gte` e não permite a utilização do `/regex/i`##
+### O operador $not é indicado para fazer operações lógicas usando em conjuntos `$lt,$lte, $gt, $gte` e não permite a utilização do `/regex/i`###
 
-##Já o operador $ne é indica para fazer buscas em conteúdo expecifico como um certo número ou um string! Neste caso é possível utilizar '/regex/i'##
+### Já o operador $ne é indica para fazer buscas em conteúdo expecifico como um certo número ou um string! Neste caso é possível utilizar '/regex/i'###
 
 
 
