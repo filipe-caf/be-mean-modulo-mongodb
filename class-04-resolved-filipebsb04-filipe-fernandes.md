@@ -598,9 +598,10 @@ FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query)
 ```
 Fetched 0 record(s) in 1ms
 
-### 9. nesse exercício demonstre qual a diferença entre os operadores $ne e $not.
+### 9. Demonstre qual a diferença entre os operadores $ne e $not.
 
->Primeiro vamos listar os pokemons com attack menor que 8000
+>Primeiro vamos listar os pokemons com attack menor que 8000.
+
 ```js
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: {$lt : 8000}}
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var mod = {"name": 1, "attack": 1}
@@ -629,7 +630,8 @@ Fetched 4 record(s) in 27ms
 
 ```
 
->Agora utilizando o $not para negar e trazer o oposto
+>Agora utilizando o $not para negar e trazer o oposto.
+
 ```js
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: { $not : {$lt : 8000}}}
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query,mod)
@@ -648,6 +650,7 @@ Fetched 2 record(s) in 5ms
 ```
 
 >Se no mesmo exemplo fosse utilizado o $ne não teria um resultado satisfatório, pois ele não consegue utilizar a lógida do opedaor $lt e lista todos os pokemons que não sejam iguais a attack 8000.
+
 ```js
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> var query = {attack: { $ne : {$lt : 8000}}}
 FilipeFernandes(C:\mongodb\bin\mongod.exe) test> db.pokemons.find(query,mod)
@@ -686,9 +689,9 @@ Fetched 6 record(s) in 44ms
 ```
 
 
-> O operador $not é indicado para fazer operações lógicas usando em conjuntos `$lt,$lte, $gt, $gte` e não permite a utilização do `/regex/i`
+## O operador $not é indicado para fazer operações lógicas usando em conjuntos `$lt,$lte, $gt, $gte` e não permite a utilização do `/regex/i`##
 
-> Já o operador $ne é indica para fazer buscas em conteúdo expecifico como um certo número ou um string! Neste caso é possível utilizar '/regex/i'
+##Já o operador $ne é indica para fazer buscas em conteúdo expecifico como um certo número ou um string! Neste caso é possível utilizar '/regex/i'##
 
 
 
